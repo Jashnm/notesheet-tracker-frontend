@@ -1,33 +1,28 @@
+import { MoonIcon, SunIcon } from "@chakra-ui/icons";
 import {
   Box,
-  Button,
   Flex,
-  Image,
+  IconButton,
   List,
   ListItem,
-  Text
+  Switch,
+  Text,
+  useColorMode
 } from "@chakra-ui/react";
-import { useRouter } from "next/dist/client/router";
+
 import Link from "next/link";
-import { mutate } from "swr";
-import { logout } from "../API/userActions";
-import { LOGOUT, START_LOADING } from "../constants";
-import {
-  useAuthDispatch,
-  useAuthState
-} from "../context/userContext/UserState";
+
 import { useUserStore } from "../store/useStore";
-import useUser from "../utils/useUser";
+
 import NavItem from "./NavItem";
 import NavProfileMenu from "./NavProfileMenu";
 import NewSheetDrawer from "./NewSheetDrawer";
 
 const Navbar = () => {
-  //   const { authenticated, mutate, loading } = useUser();
-
   const { authenticated } = useUserStore((state) => ({
     authenticated: state.authenticated
   }));
+  const { colorMode, toggleColorMode } = useColorMode();
 
   return (
     <>
@@ -44,11 +39,11 @@ const Navbar = () => {
           wrap="wrap"
           px={["1rem", "1.5rem"]}
           py={["0.2rem", "0.5rem"]}
-          background="white"
+          bgColor="blue"
           m="auto"
           w={["100%", "94%", "90%"]}
           top="0"
-          color="cyan.900"
+          color="gray"
         >
           <Link href="/">
             <a>
@@ -82,6 +77,15 @@ const Navbar = () => {
             ) : (
               <NavItem link="/login" name="Login" />
             )}
+            <ListItem>
+              <IconButton
+                variant="ghost"
+                fontSize="18px"
+                aria-label="color-mode"
+                onClick={toggleColorMode}
+                icon={colorMode === "light" ? <MoonIcon /> : <SunIcon />}
+              />
+            </ListItem>
           </List>
         </Flex>
       </Box>

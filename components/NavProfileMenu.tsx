@@ -35,7 +35,7 @@ const NavProfileMenu = () => {
               logout();
               dispatch(LOGOUT);
               sessionStorage.clear();
-              // mutate();
+
               router.push("/login");
             }}
           >

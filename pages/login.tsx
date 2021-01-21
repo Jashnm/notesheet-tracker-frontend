@@ -92,7 +92,7 @@ const login = () => {
                 type="submit"
                 p="3"
                 mt="4"
-                colorScheme="cyan"
+                colorScheme="blue"
                 mx="3"
                 w="60%"
                 fontSize="lg"
@@ -104,7 +104,7 @@ const login = () => {
             <Box fontSize="sm" mt="2" mx="4" fontWeight="semibold">
               New here?{" "}
               <Link href="/register">
-                <Text as="a" color="cyan.600" cursor="pointer">
+                <Text as="a" color="blue.600" cursor="pointer">
                   Sign Up
                 </Text>
               </Link>

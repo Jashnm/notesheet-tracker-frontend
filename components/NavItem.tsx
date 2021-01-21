@@ -11,7 +11,7 @@ const NavItem: React.FC<INavItemsProps> = ({ name, link }) => {
     <>
       <Link href={link}>
         <a>
-          <Text fontSize="lg" colorScheme="cyan" _hover={{ color: "cyan.700" }}>
+          <Text fontSize="lg" colorScheme="blue" _hover={{ color: "blue.700" }}>
             {name}
           </Text>
         </a>

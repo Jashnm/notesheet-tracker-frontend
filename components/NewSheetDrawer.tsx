@@ -20,8 +20,8 @@ const NewSheetDrawer = () => {
 
   return (
     <>
-      <Button colorScheme="cyan" onClick={onOpen}>
-        Create New Notesheet
+      <Button colorScheme="blue" onClick={onOpen}>
+        Create Notesheet
       </Button>
 
       <Drawer isOpen={isOpen} onClose={onClose}>
@@ -38,7 +38,7 @@ const NewSheetDrawer = () => {
               p="3"
               mt="10"
               mb="4"
-              colorScheme="cyan"
+              colorScheme="blue"
               mx="3"
               rounded="sm"
               w="60%"

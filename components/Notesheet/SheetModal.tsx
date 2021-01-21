@@ -94,7 +94,7 @@ const SheetModal: React.FC<ISheetModalProps> = ({
               )}
               {user && user.uuid !== startedBy.uuid && (
                 <Button
-                  colorScheme="cyan"
+                  colorScheme="blue"
                   variant="outline"
                   mr={3}
                   onClick={proceedNext}
@@ -103,7 +103,7 @@ const SheetModal: React.FC<ISheetModalProps> = ({
                 </Button>
               )}
             </Flex>
-            <Button colorScheme="cyan" onClick={onClose}>
+            <Button colorScheme="blue" onClick={onClose}>
               Close
             </Button>
           </ModalFooter>

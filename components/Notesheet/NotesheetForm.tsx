@@ -61,7 +61,7 @@ const NotesheetForm = () => {
       <Checkbox
         mx="3"
         size="md"
-        colorScheme="cyan"
+        colorScheme="blue"
         ref={register}
         name="financial"
       >

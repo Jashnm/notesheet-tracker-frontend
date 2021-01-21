@@ -5,6 +5,8 @@ import {
   Flex,
   Tag,
   Text,
+  useColorMode,
+  useColorModeValue,
   useDisclosure,
   Wrap,
   WrapItem
@@ -27,6 +29,9 @@ const NotesheetBox: React.FC<INotesheetProps> = ({ notesheet, creator }) => {
     await nsActions.deleteNotesheet(uuid);
     mutate("/notesheet/allsheets");
   };
+
+  const bg = useColorModeValue("blue.400", "blue.600");
+  const color = useColorModeValue("gray.100", "gray.700");
   const {
     title,
     body,
@@ -50,13 +55,13 @@ const NotesheetBox: React.FC<INotesheetProps> = ({ notesheet, creator }) => {
         mx="3"
         my="5"
       >
-        <Wrap bgColor="cyan.200" px="2" py="4" rounded="sm">
+        <Wrap bgColor={bg} px="2" py="4" rounded="sm">
           <WrapItem>
             <Text fontSize="lg" fontWeight="bold">
               {title}
             </Text>
           </WrapItem>
-          <WrapItem bgColor="cyan.300" rounded="sm">
+          <WrapItem bgColor={color} rounded="sm">
             <Text px="2" fontSize="md">
               By{" "}
               <Text as="span" fontWeight="semibold">
@@ -90,7 +95,7 @@ const NotesheetBox: React.FC<INotesheetProps> = ({ notesheet, creator }) => {
         <Flex mt="3" lineHeight="md" px="2">
           <Box p="1" fontWeight="semibold">
             Description:
-            <Text fontWeight="normal" color="gray.600" mt="1">
+            <Text fontWeight="normal" color="gray" mt="1">
               {body}
             </Text>
           </Box>
@@ -101,7 +106,7 @@ const NotesheetBox: React.FC<INotesheetProps> = ({ notesheet, creator }) => {
             p="2"
             rounded="sm"
             variant="ghost"
-            colorScheme="cyan"
+            colorScheme="blue"
             onClick={() => {
               onOpen();
               setOpen(!open);

@@ -1,7 +1,7 @@
 import "../styles/globals.css";
 
 import type { AppProps /*, AppContext */ } from "next/app";
-import { ChakraProvider, Flex, theme } from "@chakra-ui/react";
+import { ChakraProvider } from "@chakra-ui/react";
 import axios from "axios";
 import { useRouter } from "next/dist/client/router";
 import { SWRConfig } from "swr";
@@ -9,6 +9,7 @@ import Navbar from "../components/Navbar";
 import { useEffect } from "react";
 import { useUserStore } from "../store/useStore";
 import Footer from "../components/Footer";
+import theme from "../theme";
 
 axios.defaults.baseURL = process.env.NEXT_PUBLIC_API_URL;
 axios.defaults.withCredentials = true;
@@ -24,6 +25,12 @@ const fetcher = async (url: any) => {
 };
 
 function MyApp({ Component, pageProps }: AppProps) {
+  //Color mode config
+  const config = {
+    initialColorMode: "light",
+    useSystemColorMode: false
+  };
+
   const { push, pathname } = useRouter();
   const authRoutes = ["/login"];
 
