@@ -1,18 +1,13 @@
-import { Box, Button, Flex, Text } from "@chakra-ui/react";
-import { joiResolver } from "@hookform/resolvers/joi";
 import axios from "axios";
 import Joi from "joi";
+import { Box, Button, Flex, Text } from "@chakra-ui/react";
+import { joiResolver } from "@hookform/resolvers/joi";
 import { useRouter } from "next/dist/client/router";
 import Link from "next/link";
 import { useForm } from "react-hook-form";
 import InputField from "../components/InputField";
-
-import {
-  useAuthDispatch,
-  useAuthState
-} from "../context/userContext/UserState";
 import { getProfile } from "../API/userActions";
-import useUser from "../utils/useUser";
+
 import { LOGIN } from "../constants";
 import { useUserStore } from "../store/useStore";
 

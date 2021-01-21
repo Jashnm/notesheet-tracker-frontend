@@ -4,15 +4,11 @@ import {
   Container,
   Flex,
   Heading,
-  VStack,
-  Text
+  VStack
 } from "@chakra-ui/react";
-import { useRouter } from "next/dist/client/router";
 import React from "react";
-import Footer from "../components/Footer";
 import ProfileInfoBox from "../components/ProfileInfoBox";
 import { useUserStore } from "../store/useStore";
-import useUser from "../utils/useUser";
 
 const profile = () => {
   // const { authenticated, loading } = useAuthState();
@@ -26,14 +22,12 @@ const profile = () => {
 
   // const dispatch = useAuthDispatch();
 
-  const router = useRouter();
-
   // const { user, loading, authenticated } = useUser();
 
   if (loading && authenticated) {
     return <div>Loading...</div>;
   }
-  // if (authenticated && user) {
+
   return (
     <>
       {user && (
@@ -88,7 +82,6 @@ const profile = () => {
           </Flex>
         </Container>
       )}
-      {/* <Footer /> */}
     </>
   );
 };
