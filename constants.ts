@@ -11,3 +11,5 @@ export const NOTESHEETS_ERROR = "NOTESHEETS_ERROR";
 export const REMOVE_NOTESHEETS = "REMOVE_NOTESHEETS";
 
 export const SET_ALERT = "SET_ALERT";
+
+export const API = process.env.NEXT_PUBLIC_API_URL;

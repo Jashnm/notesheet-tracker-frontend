@@ -13,7 +13,9 @@ import Footer from "../components/Footer";
 axios.defaults.baseURL = process.env.NEXT_PUBLIC_API_URL;
 axios.defaults.withCredentials = true;
 
-const fetcher = async (url) => {
+console.log(axios.defaults.baseURL);
+
+const fetcher = async (url: string) => {
   try {
     const res = await axios.get(url);
 

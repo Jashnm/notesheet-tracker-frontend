@@ -1,11 +1,12 @@
 import axios from "axios";
+import { API } from "../constants";
 
 const nsActions = {
   createNotesheet: async (values) => {
     try {
       const { title, body, financial } = values;
 
-      const res = await axios.post(`/notesheet/new`, {
+      const res = await axios.post(`${API}/notesheet/new`, {
         title: title,
         body,
         financial: financial
@@ -18,7 +19,7 @@ const nsActions = {
 
   getLiveNotesheets: async () => {
     try {
-      const res = await axios.get(`/user/live-notesheets`);
+      const res = await axios.get(`${API}/user/live-notesheets`);
       return res.data;
     } catch (err) {
       console.log(err.response);
@@ -28,7 +29,7 @@ const nsActions = {
 
   updateNotesheet: async (uuid: string, data) => {
     try {
-      const res = await axios.put(`/notesheet/${uuid}`, data);
+      const res = await axios.put(`${API}/notesheet/${uuid}`, data);
       return res.data;
     } catch (err) {
       console.log(err.response);
@@ -38,7 +39,7 @@ const nsActions = {
 
   deleteNotesheet: async (uuid: string) => {
     try {
-      const res = await axios.delete(`/notesheet/delete/${uuid}`);
+      const res = await axios.delete(`${API}/notesheet/delete/${uuid}`);
       return res.data;
     } catch (err) {
       console.log(err.response.data);

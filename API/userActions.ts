@@ -1,8 +1,9 @@
 import axios from "axios";
+import { API } from "../constants";
 
 export const login = async (email: string, password: string) => {
   try {
-    const res = await axios.post("/user/login", {
+    const res = await axios.post(`${API}/user/login`, {
       email,
       pwd: password
     });
@@ -15,7 +16,7 @@ export const login = async (email: string, password: string) => {
 
 export const getProfile = async () => {
   try {
-    let res = await axios.get(`/user/profile`);
+    let res = await axios.get(`${API}/user/profile`);
     console.log(res.data);
 
     return res.data;
@@ -27,7 +28,7 @@ export const getProfile = async () => {
 
 export const logout = async () => {
   try {
-    await axios.get(`/user/logout`);
+    await axios.get(`${API}/user/logout`);
   } catch (err) {
     console.log(err);
   }

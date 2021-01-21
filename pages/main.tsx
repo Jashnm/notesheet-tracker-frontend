@@ -4,6 +4,7 @@ import useSWR from "swr";
 
 import { useSheetStore, useUserStore } from "../store/useStore";
 import SheetTab from "../components/Notesheet/SheetTab";
+import { useEffect } from "react";
 
 const main = () => {
   // const { authenticated, loading } = useAuthState();
@@ -19,9 +20,11 @@ const main = () => {
     !loading ? "/user/notesheets" : null
   );
 
-  // useEffect(() => {
-  //   dispatch(GET_LIVE_NOTESHEETS, data);
-  // }, [data]);
+  useEffect(() => {
+    console.log(notesheets);
+
+    // dispatch(GET_LIVE_NOTESHEETS, data);
+  }, [notesheets]);
 
   if (loading) {
     <div>Loading...</div>;
