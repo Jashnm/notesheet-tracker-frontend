@@ -19,16 +19,12 @@ const schema = Joi.object({
 });
 
 const login = () => {
-  // const { authenticated } = useAuthState();
-  // const dispatch = useAuthDispatch();
   const { authenticated, dispatch, loading } = useUserStore((state) => ({
     authenticated: state.authenticated,
     loading: state.loading,
 
     dispatch: state.dispatch
   }));
-
-  // const { mutate, authenticated } = useUser();
 
   const router = useRouter();
   if (authenticated) router.push("/main");

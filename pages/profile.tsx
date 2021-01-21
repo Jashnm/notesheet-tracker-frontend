@@ -11,18 +11,11 @@ import ProfileInfoBox from "../components/ProfileInfoBox";
 import { useUserStore } from "../store/useStore";
 
 const profile = () => {
-  // const { authenticated, loading } = useAuthState();
   const { authenticated, loading, user } = useUserStore((state) => ({
     authenticated: state.authenticated,
     loading: state.loading,
     user: state.user
   }));
-
-  // const { data: user } = useSWR(authenticated ? "/user/profile" : null);
-
-  // const dispatch = useAuthDispatch();
-
-  // const { user, loading, authenticated } = useUser();
 
   if (loading && authenticated) {
     return <div>Loading...</div>;
