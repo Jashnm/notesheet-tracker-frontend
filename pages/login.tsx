@@ -68,7 +68,7 @@ const login = () => {
   };
 
   return (
-    <div>
+    <>
       <Flex w="100vw" direction={["column", "column", "row"]}>
         <Flex
           w={["100%", "100%", "60%"]}
@@ -122,7 +122,7 @@ const login = () => {
           </Box>
         </Flex>
       </Flex>
-    </div>
+    </>
   );
 };
 

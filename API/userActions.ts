@@ -9,7 +9,6 @@ export const login = async (email: string, password: string) => {
     });
     return res.data;
   } catch (err) {
-    console.log(err);
     return err.response.data;
   }
 };
@@ -21,7 +20,6 @@ export const getProfile = async () => {
 
     return res.data;
   } catch (err) {
-    console.log(err);
     throw err.response.data;
   }
 };
@@ -29,7 +27,5 @@ export const getProfile = async () => {
 export const logout = async () => {
   try {
     await axios.get(`${API}/user/logout`);
-  } catch (err) {
-    console.log(err);
-  }
+  } catch (err) {}
 };

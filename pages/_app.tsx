@@ -10,7 +10,7 @@ import { useEffect } from "react";
 import { useUserStore } from "../store/useStore";
 import Footer from "../components/Footer";
 
-// axios.defaults.baseURL = process.env.NEXT_PUBLIC_API_URL;
+axios.defaults.baseURL = process.env.NEXT_PUBLIC_API_URL;
 axios.defaults.withCredentials = true;
 
 const fetcher = async (url: any) => {
