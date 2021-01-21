@@ -25,20 +25,20 @@ import NewSheetDrawer from "./NewSheetDrawer";
 const Navbar = () => {
   //   const { authenticated, mutate, loading } = useUser();
 
-  const { authenticated, loading, dispatch } = useUserStore((state) => ({
-    authenticated: state.authenticated,
-    loading: state.loading,
-    dispatch: state.dispatch
+  const { authenticated } = useUserStore((state) => ({
+    authenticated: state.authenticated
   }));
-  const router = useRouter();
-
-  if (loading) return null;
 
   return (
     <>
-      <Box w="100%" borderBottom="1px" borderBottomColor="gray.100" maxH="6rem">
+      <Box
+        as="nav"
+        w="100vw"
+        borderBottom="1px"
+        borderBottomColor="gray.100"
+        minH="6rem"
+      >
         <Flex
-          as="nav"
           align="center"
           justify="space-between"
           wrap="wrap"
@@ -71,30 +71,13 @@ const Navbar = () => {
           >
             {authenticated ? (
               <>
-                <NavItem link="/main" name="Home" />
+                <NavItem link="/home" name="Home" />
                 <ListItem>
                   <NewSheetDrawer />
                 </ListItem>
                 <ListItem>
                   <NavProfileMenu />
                 </ListItem>
-                {/*
-                <ListItem>
-                  <Button
-                    colorScheme="cyan"
-                    variant="outline"
-                    alignItems="center"
-                    onClick={() => {
-                      logout();
-                      dispatch(LOGOUT);
-                      dispatch(START_LOADING);
-                      // mutate();
-                      router.push("/login");
-                    }}
-                  >
-                    Logout
-                  </Button>
-                </ListItem> */}
               </>
             ) : (
               <NavItem link="/login" name="Login" />

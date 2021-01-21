@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import useSWR from "swr";
 import { USER_NOTESHEETS } from "../../constants";
 import { useSheetStore } from "../../store/useStore";
+import { Notesheet } from "../../types";
 import NotesheetBox from "./NotesheetBox";
 
 const SheetTab = () => {
@@ -11,7 +12,7 @@ const SheetTab = () => {
     dispatch: state.dispatch,
     loading: state.loading
   }));
-  // const { loading, authenticated } = useUser();
+
   const { data, error } = useSWR(!loading ? "/notesheet/allsheets" : null);
 
   useEffect(() => {
@@ -23,7 +24,7 @@ const SheetTab = () => {
     <div>Loading...</div>;
   }
 
-  let completed, all;
+  let completed: Notesheet[] | undefined, all: Notesheet[] | undefined;
   if (data) {
     completed = data.map((note) => {
       if (note.status === "COMPLETED")

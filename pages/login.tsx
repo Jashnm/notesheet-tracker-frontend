@@ -27,7 +27,7 @@ const login = () => {
   }));
 
   const router = useRouter();
-  if (authenticated) router.push("/main");
+  if (authenticated) router.push("/home");
 
   const { register, handleSubmit, errors, setError } = useForm({
     mode: "onBlur",
@@ -53,11 +53,12 @@ const login = () => {
         email,
         pwd: password
       });
-      if (res.data) {
+
+      if (res) {
         const profile = await getProfile();
         dispatch(LOGIN, profile);
 
-        router.replace("/main");
+        router.replace("/home");
       }
     } catch (err) {
       setError("password", {

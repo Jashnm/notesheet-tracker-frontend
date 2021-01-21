@@ -4,9 +4,11 @@ import useSWR from "swr";
 
 import { useSheetStore, useUserStore } from "../store/useStore";
 import SheetTab from "../components/Notesheet/SheetTab";
+import { useEffect } from "react";
+import { GET_LIVE_NOTESHEETS } from "../constants";
 
 const main = () => {
-  const { loading } = useSheetStore((state) => ({
+  const { loading, dispatch } = useSheetStore((state) => ({
     notesheets: state.notesheets,
     dispatch: state.dispatch,
     loading: state.loading
@@ -16,12 +18,9 @@ const main = () => {
   const { data: notesheets, error } = useSWR(
     !loading ? "/user/notesheets" : null
   );
-
-  // useEffect(() => {
-  //   console.log(notesheets);
-
-  // dispatch(GET_LIVE_NOTESHEETS, data);
-  // }, [notesheets]);
+  useEffect(() => {
+    dispatch(GET_LIVE_NOTESHEETS, notesheets);
+  }, [notesheets]);
 
   if (loading) {
     <div>Loading...</div>;
