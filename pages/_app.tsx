@@ -13,8 +13,6 @@ import Footer from "../components/Footer";
 axios.defaults.baseURL = process.env.NEXT_PUBLIC_API_URL;
 axios.defaults.withCredentials = true;
 
-console.log(axios.defaults.baseURL);
-
 const fetcher = async (url: string) => {
   try {
     const res = await axios.get(url);
@@ -29,6 +27,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   const { push, pathname } = useRouter();
   const authRoutes = ["/login"];
 
+  console.log(axios.defaults.baseURL);
   const authRoute = authRoutes.includes(pathname);
 
   const authenticated = useUserStore((state) => state.authenticated);
