@@ -12,8 +12,6 @@ const nsActions = {
         financial: financial
       });
 
-      console.log(res);
-
       return res.data;
     } catch (err) {
       return err.response.data;
@@ -25,7 +23,7 @@ const nsActions = {
       const res = await axios.get(`/user/live-notesheets`);
       return res.data;
     } catch (err) {
-      console.log(err.response);
+      console.log(err.response.data);
       return err.response.data;
     }
   },
@@ -35,7 +33,7 @@ const nsActions = {
       const res = await axios.put(`/notesheet/${uuid}`, data);
       return res.data;
     } catch (err) {
-      console.log(err.response);
+      console.log(err.response.data);
       return err.response.data;
     }
   },

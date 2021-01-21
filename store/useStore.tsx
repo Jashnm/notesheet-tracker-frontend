@@ -1,30 +1,21 @@
 import create from "zustand";
 import { persist } from "zustand/middleware";
-import { notesheetReducer } from "../context/notesheetContext/notesheetReducer";
-import { reducer } from "../context/userContext/userReducer";
-import { miscReducer } from "../context/miscReducer";
+import { notesheetReducer } from "./notesheetReducer";
+import { reducer } from "./userReducer";
 import { User, Notesheet } from "../types";
 
 type UserState = {
   user: User | undefined;
   authenticated: boolean;
   loading: boolean;
-  dispatch: (type: string, payload?) => any;
+  dispatch: (type: string, payload?: any) => any;
 };
 
 type SheetState = {
   notesheets: Notesheet[] | undefined;
   userNotesheets: Notesheet[] | undefined;
   loading: boolean;
-  startLoading: () => void;
-  //   getNotesheets: (data) => any;
-  dispatch: (type, payload?) => any;
-};
-
-type AlterState = {
-  type: "info" | "warning" | "success" | "error";
-  message: string;
-  dispatch: (type, payload) => any;
+  dispatch: (type: string, payload?: any) => any;
 };
 
 export const useUserStore = create<UserState>(
@@ -41,21 +32,15 @@ export const useUserStore = create<UserState>(
   )
 );
 
-// const useStore = create(devtools(useUserStore));
-
-export const useSheetStore = create<SheetState>((set) => ({
-  notesheets: null,
-  loading: false,
-  userNotesheets: null,
-  startLoading: () => set((state) => ({ loading: true })),
-
-  dispatch: (type, payload) =>
-    set((state) => notesheetReducer(state, { type, payload }))
-}));
-
-export const useAltertStore = create<AlterState>((set) => ({
-  type: "info",
-  message: "Message",
-  dispatch: (type, payload) =>
-    set((state) => miscReducer(state, { type, payload }))
-}));
+export const useSheetStore = create<SheetState>(
+  persist(
+    (set) => ({
+      notesheets: null,
+      loading: false,
+      userNotesheets: null,
+      dispatch: (type, payload) =>
+        set((state) => notesheetReducer(state, { type, payload }))
+    }),
+    { name: "notesheets", getStorage: () => sessionStorage }
+  )
+);

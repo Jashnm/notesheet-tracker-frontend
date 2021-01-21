@@ -6,9 +6,7 @@ import {
   STOP_LOADING,
   UPDATE_NOTESHEET,
   USER_NOTESHEETS
-} from "../../constants";
-
-import { NoteState } from "./notesheetContext";
+} from "../constants";
 
 interface Action {
   type: string;

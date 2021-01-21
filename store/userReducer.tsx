@@ -1,5 +1,5 @@
-import { LOGIN, LOGOUT, START_LOADING, STOP_LOADING } from "../../constants";
-import { State } from "../../types";
+import { LOGIN, LOGOUT, START_LOADING, STOP_LOADING } from "../constants";
+import { State } from "../types";
 
 interface Action {
   type: string;

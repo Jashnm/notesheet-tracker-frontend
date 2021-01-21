@@ -42,7 +42,6 @@ const login = () => {
         email,
         pwd: password
       });
-      console.log(res);
 
       if (res.data) {
         dispatch(LOGIN, res.data);
