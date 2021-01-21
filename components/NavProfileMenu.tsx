@@ -34,7 +34,7 @@ const NavProfileMenu = () => {
             onClick={() => {
               logout();
               dispatch(LOGOUT);
-              dispatch(START_LOADING);
+              sessionStorage.clear();
               // mutate();
               router.push("/login");
             }}

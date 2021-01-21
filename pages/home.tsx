@@ -5,22 +5,29 @@ import useSWR from "swr";
 import { useSheetStore, useUserStore } from "../store/useStore";
 import SheetTab from "../components/Notesheet/SheetTab";
 import { useEffect } from "react";
-import { GET_LIVE_NOTESHEETS } from "../constants";
+import { GET_LIVE_NOTESHEETS, LOGIN, STOP_LOADING } from "../constants";
+import { getProfile } from "../API/userActions";
 
 const main = () => {
-  const { loading, dispatch } = useSheetStore((state) => ({
+  const { loading } = useSheetStore((state) => ({
     notesheets: state.notesheets,
     dispatch: state.dispatch,
     loading: state.loading
   }));
-  const authenticated = useUserStore((state) => state.authenticated);
-  // const { loading, authenticated } = useUser();
+
+  const dispatch = useUserStore((state) => state.dispatch);
+
   const { data: notesheets, error } = useSWR(
     !loading ? "/user/notesheets" : null
   );
   useEffect(() => {
-    dispatch(GET_LIVE_NOTESHEETS, notesheets);
-  }, [notesheets]);
+    async function gettingProfile() {
+      const profile = await getProfile();
+
+      dispatch(LOGIN, profile);
+    }
+    gettingProfile();
+  }, [dispatch]);
 
   if (loading) {
     <div>Loading...</div>;

@@ -19,7 +19,8 @@ export const reducer = (state: State, { type, payload }: Action) => {
       return {
         ...state,
         authenticated: false,
-        user: null
+        user: null,
+        loading: false
       };
     case START_LOADING:
       return {

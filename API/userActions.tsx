@@ -15,7 +15,7 @@ export const login = async (email: string, password: string) => {
 
 export const getProfile = async () => {
   try {
-    let res = await axios.get(`/user/profile`);
+    const res = await axios.get(`/user/profile`);
 
     return res.data;
   } catch (err) {

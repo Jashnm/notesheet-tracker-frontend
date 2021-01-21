@@ -2,6 +2,8 @@ import {
   GET_LIVE_NOTESHEETS,
   NOTESHEETS_ERROR,
   REMOVE_NOTESHEETS,
+  START_LOADING,
+  STOP_LOADING,
   UPDATE_NOTESHEET,
   USER_NOTESHEETS
 } from "../../constants";
@@ -25,6 +27,16 @@ export const notesheetReducer = (state, { type, payload }: Action) => {
       return {
         ...state,
         userNotesheets: payload,
+        loading: false
+      };
+    case START_LOADING:
+      return {
+        ...state,
+        loading: true
+      };
+    case STOP_LOADING:
+      return {
+        ...state,
         loading: false
       };
     case REMOVE_NOTESHEETS:

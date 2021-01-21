@@ -9,11 +9,17 @@ import {
   DrawerOverlay,
   useDisclosure
 } from "@chakra-ui/react";
-import React from "react";
+import React, { useEffect } from "react";
+import { useSheetStore } from "../store/useStore";
 import NotesheetForm from "./Notesheet/NotesheetForm";
 
 const NewSheetDrawer = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
+
+  const loading = useSheetStore((state) => state.loading);
+  useEffect(() => {
+    console.log(loading);
+  }, [loading]);
 
   return (
     <>
@@ -41,6 +47,7 @@ const NewSheetDrawer = () => {
               w="60%"
               fontSize="lg"
               form="sheet-form"
+              isLoading={loading}
             >
               Submit
             </Button>

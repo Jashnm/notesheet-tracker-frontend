@@ -18,7 +18,7 @@ type SheetState = {
   loading: boolean;
   startLoading: () => void;
   //   getNotesheets: (data) => any;
-  dispatch: (type, payload) => any;
+  dispatch: (type, payload?) => any;
 };
 
 type AlterState = {
@@ -32,7 +32,7 @@ export const useUserStore = create<UserState>(
     (set) => ({
       user: null,
       authenticated: false,
-      loading: true,
+      loading: false,
       userNotesheets: null,
       dispatch: (type, payload) =>
         set((state) => reducer(state, { type, payload }))
@@ -45,11 +45,11 @@ export const useUserStore = create<UserState>(
 
 export const useSheetStore = create<SheetState>((set) => ({
   notesheets: null,
-  loading: true,
+  loading: false,
   userNotesheets: null,
   startLoading: () => set((state) => ({ loading: true })),
 
-  dispatch: (type, payload?) =>
+  dispatch: (type, payload) =>
     set((state) => notesheetReducer(state, { type, payload }))
 }));
 

@@ -5,8 +5,8 @@ import { FormEvent } from "react";
 import { useForm } from "react-hook-form";
 import { mutate } from "swr";
 import nsActions from "../../API/notesheetActions";
-import { useAltertStore } from "../../store/useStore";
-import CustomAltert from "../CustomAltert";
+import { START_LOADING, STOP_LOADING } from "../../constants";
+import { useSheetStore } from "../../store/useStore";
 import InputField from "../InputField";
 
 const schema = Joi.object({
@@ -17,17 +17,18 @@ const schema = Joi.object({
 
 const NotesheetForm = () => {
   const toast = useToast();
-  // const { createNotesheet } = useNoteState();
+
   const { register, handleSubmit, errors, setError, reset } = useForm({
     mode: "onBlur",
     resolver: joiResolver(schema)
   });
+  const dispatch = useSheetStore((state) => state.dispatch);
 
   const onSubmit = async (values) => {
+    dispatch(START_LOADING);
     await nsActions.createNotesheet(values);
     mutate("/user/notesheets");
     reset();
-
     toast({
       status: "success",
       title: "Successfully created",

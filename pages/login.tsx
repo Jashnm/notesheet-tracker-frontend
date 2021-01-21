@@ -8,7 +8,7 @@ import { useForm } from "react-hook-form";
 import InputField from "../components/InputField";
 import { getProfile } from "../API/userActions";
 
-import { LOGIN } from "../constants";
+import { LOGIN, START_LOADING } from "../constants";
 import { useUserStore } from "../store/useStore";
 
 const schema = Joi.object({
@@ -34,29 +34,17 @@ const login = () => {
     resolver: joiResolver(schema)
   });
 
-  // const onSubmit = async (values) => {
-  //   const { email, password } = values;
-
-  //   const res = await loginUser(email, password);
-  //   mutate();
-  //   console.log(res);
-
-  //   if (res) {
-  //     router.push("/main");
-  //   }
-  // };
-
   const onSubmit = async (values) => {
     const { email, password } = values;
+    dispatch(START_LOADING);
     try {
       const res = await axios.post("/user/login", {
         email,
         pwd: password
       });
 
-      if (res) {
-        const profile = await getProfile();
-        dispatch(LOGIN, profile);
+      if (res.data) {
+        dispatch(LOGIN, res.data);
 
         router.replace("/home");
       }
@@ -108,6 +96,7 @@ const login = () => {
                 mx="3"
                 w="60%"
                 fontSize="lg"
+                isLoading={loading}
               >
                 Log In
               </Button>
