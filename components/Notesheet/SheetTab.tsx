@@ -17,7 +17,6 @@ const SheetTab = () => {
 
   useEffect(() => {
     dispatch(USER_NOTESHEETS, data);
-    console.log(userNotesheets);
   }, [data]);
 
   if (loading) {

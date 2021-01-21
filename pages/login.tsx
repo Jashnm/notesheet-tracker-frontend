@@ -38,14 +38,11 @@ const login = () => {
     const { email, password } = values;
     dispatch(START_LOADING);
     try {
-      const res = await axios.post(
-        "/user/login",
-        {
-          email,
-          pwd: password
-        },
-        { withCredentials: true }
-      );
+      const res = await axios.post("/user/login", {
+        email,
+        pwd: password
+      });
+      console.log(res);
 
       if (res.data) {
         dispatch(LOGIN, res.data);

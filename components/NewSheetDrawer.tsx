@@ -17,9 +17,6 @@ const NewSheetDrawer = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   const loading = useSheetStore((state) => state.loading);
-  useEffect(() => {
-    console.log(loading);
-  }, [loading]);
 
   return (
     <>
