@@ -15,8 +15,10 @@ export default function Home() {
     <Flex align="center" justify="center" h="100%">
       <List spacing={4}>
         <CustomItem>Create Notesheets in a zap.</CustomItem>
-        <CustomItem>Notesheets get transferred upper in hierarchy.</CustomItem>
-        <CustomItem>Instant acceptance and completion of notesheet,</CustomItem>
+        <CustomItem>
+          Notesheets get transferred uppward in hierarchy.
+        </CustomItem>
+        <CustomItem>Instant acceptance and completion of notesheet.</CustomItem>
       </List>
     </Flex>
   );
