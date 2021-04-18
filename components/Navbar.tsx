@@ -28,7 +28,7 @@ const Navbar = () => {
     <>
       <Box
         as="nav"
-        w="100vw"
+        w="100%"
         borderBottom="1px"
         borderBottomColor="gray.100"
         minH="6rem"
@@ -60,24 +60,25 @@ const Navbar = () => {
             listStyleType="none"
             display="flex"
             flexWrap="wrap"
+            alignItems="center"
             justifyContent="space-evenly"
-            alignItems="baseline"
             fontWeight="semibold"
+            py="2"
           >
             {authenticated ? (
               <>
                 <NavItem link="/home" name="Home" />
-                <ListItem>
+                <ListItem mt="0 !important">
                   <NewSheetDrawer />
                 </ListItem>
-                <ListItem>
+                <ListItem mt="0 !important">
                   <NavProfileMenu />
                 </ListItem>
               </>
             ) : (
               <NavItem link="/login" name="Login" />
             )}
-            <ListItem>
+            <ListItem mt="0 !important">
               <IconButton
                 variant="ghost"
                 fontSize="18px"
